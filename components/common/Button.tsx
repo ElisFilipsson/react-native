@@ -1,22 +1,25 @@
 import React from 'react';
-import { Button, Alert } from 'react-native';
+import { Button, Alert, NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
 
 interface ButtonProps {
-    title: string,
-    accessibilityLabel?: string,
-    color?: string
+    label: string,
+    title?: string,
+    color?: string,
+    onAction: (ev?: NativeSyntheticEvent<NativeTouchEvent>) => void;
 }
+
 const CustomButton: React.SFC<ButtonProps> = (props) => {
     return (
         <Button
-            title={props.title}
-            onPress={() => Alert.alert('Simple Button pressed')}
+            title={props.label}
+            onPress={props.onAction}
             color={props.color}
-            accessibilityLabel={props.accessibilityLabel}
+            accessibilityLabel={props.title}
         />
     );
 }
 CustomButton.defaultProps = {
-    title: "Guest User",
+    label: "Click me",
+    onAction: () => { Alert.alert("Hello World!"); },
     color: "#841584"
 }
