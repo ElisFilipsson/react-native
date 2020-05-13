@@ -10,9 +10,8 @@
 
 
 import React from 'react';
-import i18n from './translations/i18n';
-
-import * as Constants from '../../constants';
+import i18n from 'i18next';
+import * as constants from 'constants';
 
 import {
   SafeAreaView,
@@ -43,7 +42,7 @@ const Stack = createStackNavigator({
   class WrappedStack extends React.Component {
     static router = Stack.router;
     render() {
-      const { t } = this.props;
+      const { t }  = this.props;
       return <Stack screenProps={{ t }} {...this.props} />;
     }
   }
