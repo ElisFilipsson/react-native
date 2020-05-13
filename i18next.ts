@@ -12,8 +12,8 @@ i18n
           title: 'Welcome',
           introduction: 'This text comes from i18next and is provided in english.',
         },
-        page2: {
-          title: 'Page 2',
+        history: {
+          title: 'History',
           introduction: 'This text on page two.',
         },
         common: {

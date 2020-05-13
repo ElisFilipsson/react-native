@@ -10,8 +10,11 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "i18next": "^19.4.4",
     "react": "16.11.0",
-    "react-native": "0.62.2"
+    "react-i18next": "^11.4.0",
+    "react-native": "0.62.2",
+    "react-navigation": "^4.3.9"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

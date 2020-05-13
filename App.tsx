@@ -1,18 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
-
 import React from 'react';
-import i18n from 'i18next';
-import * as constants from 'constants';
-
+import i18next from 'i18next';
 import {
   SafeAreaView,
   StyleSheet,
@@ -20,6 +7,7 @@ import {
   View,
   Text,
   StatusBar,
+  Alert,
 } from 'react-native';
 
 import {
@@ -30,30 +18,23 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+const App = () => {
 
-const Stack = createStackNavigator({
-    Home: { screen: Home },
-    Page2: { screen: Page2 },
+  i18next.init({
+    lng: 'en',
+    debug: true,
+    resources: {
+      en: {
+        translation: {
+          "key": "hello world"
+        }
+      }
+    }
+  }).then((t: any) => {
+    // initialized and ready to go!
+    Alert.alert("initiated language" + t);
   });
   
-  // Wrapping a stack with translation hoc asserts we get new render on language change
-  // the hoc is set to only trigger rerender on languageChanged
-  class WrappedStack extends React.Component {
-    static router = Stack.router;
-    render() {
-      const { t }  = this.props;
-      return <Stack screenProps={{ t }} {...this.props} />;
-    }
-  }
-  const ReloadAppOnLanguageChange = withNamespaces('common', {
-    bindI18n: 'languageChanged',
-    bindStore: false,
-  })(createAppContainer(WrappedStack));
-
-declare const global: {HermesInternal: null | {}};
-
-const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -62,11 +43,6 @@ const App = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
