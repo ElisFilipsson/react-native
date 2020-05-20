@@ -4,8 +4,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function HistoryComponent() {
 
-    const { t }: UseTranslationResponse = useTranslation();
-
+    const { t }: UseTranslationResponse = useTranslation("history");
 
     return (
         <View style={styles.container}>

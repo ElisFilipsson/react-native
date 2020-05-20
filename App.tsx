@@ -1,5 +1,4 @@
 import React from 'react';
-import i18next from 'i18next';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,7 +6,7 @@ import {
   View,
   Text,
   StatusBar,
-  Alert,
+  Button,
 } from 'react-native';
 
 import {
@@ -18,23 +17,12 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App = () => {
+import "./init18next.js";
+import { useTranslation } from "react-i18next";
 
-  i18next.init({
-    lng: 'en',
-    debug: true,
-    resources: {
-      en: {
-        translation: {
-          "key": "hello world"
-        }
-      }
-    }
-  }).then((t: any) => {
-    // initialized and ready to go!
-    Alert.alert("initiated language" + t);
-  });
-  
+const App: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -50,6 +38,7 @@ const App = () => {
                 Edit <Text style={styles.highlight}>App.tsx</Text> to change
                 this screen and then come back to see your edits.
               </Text>
+              <Button title={t('changeLanguageToSwedish')} onPress={() => { i18n.changeLanguage("sv"); }}></Button>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>See Your Changes</Text>

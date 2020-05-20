@@ -4,9 +4,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function HomeComponent() {
 
-    const { t }: UseTranslationResponse = useTranslation();
-
-
+    const { t }: UseTranslationResponse = useTranslation("home");    
     return (
         <View style={styles.container}>
             <Text style={styles.separate}>{t('introduction')}</Text>
